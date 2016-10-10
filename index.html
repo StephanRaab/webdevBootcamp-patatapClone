@@ -7,11 +7,12 @@
 	<link type="text/css" rel="stylesheet" href="style.css">
 
 	<script type="text/paperscript" canvas="myCanvas">
-		for(var x = 0; x < 2000; x += 100) {
-			for(var y = 0; y < 1500; y += 100) {
-				new Path.Circle(new Point(x, y), 10).fillColor = 'black ';
-			}
-		}
+		function onKeyDown(event) {
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint =  new Point.random();
+			var point = maxPoint * randomPoint;
+			new Path.Circle(point, 10).fillColor = "white";
+		};
 	</script>
 </head>
 <body>
