@@ -7,12 +7,25 @@
 	<link type="text/css" rel="stylesheet" href="style.css">
 
 	<script type="text/paperscript" canvas="myCanvas">
-		function onKeyDown(event) {
-			var maxPoint = new Point(view.size.width, view.size.height);
-			var randomPoint =  new Point.random();
-			var point = maxPoint * randomPoint;
-			new Path.Circle(point, 10).fillColor = "white";
-		};
+	var circles = [];
+
+	function onKeyDown(event) {
+		var maxPoint = new Point(view.size.width, view.size.height);
+		var randomPoint =  new Point.random();
+		var point = maxPoint * randomPoint;
+		var newCircle = new Path.Circle(point, 250);
+		newCircle.fillColor = "teal";
+
+		//pushing the random circles to the circles array
+		circles.push(newCircle);
+	};
+
+	function onFrame(event) {
+		for(var i = 0; i < circles.length; i++){
+			circles[i].fillColor.hue += 1;
+			circles[i].scale(.9);
+		}
+	}
 	</script>
 </head>
 <body>
